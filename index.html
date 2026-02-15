@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BharatSathi - Government Scheme Assistant</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f2f6ff;
+            text-align: center;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, select {
+            width: 90%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+        button {
+            background-color: #2e6cff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 95%;
+        }
+        button:hover {
+            background-color: #1f4ed8;
+        }
+    </style>
+</head>
+<body>
+
+<h2>BharatSathi 🇮🇳</h2>
+<p>AI-Powered Government Scheme Assistant</p>
+
+<div class="card">
+    <h3>Check Your Eligibility</h3>
+
+    <input type="number" id="age" placeholder="Enter Age">
+    <input type="number" id="income" placeholder="Enter Annual Income">
+    
+    <select id="occupation">
+        <option value="">Select Occupation</option>
+        <option value="farmer">Farmer</option>
+        <option value="student">Student</option>
+        <option value="unemployed">Unemployed</option>
+    </select>
+
+    <button onclick="checkScheme()">Check Schemes</button>
+
+    <div id="result" style="margin-top:15px;"></div>
+</div>
+
+<script>
+function checkScheme() {
+    let age = document.getElementById("age").value;
+    let income = document.getElementById("income").value;
+    let occupation = document.getElementById("occupation").value;
+
+    let result = "";
+
+    if (occupation === "farmer" && income < 600000) {
+        result += "<p>✅ Eligible for PM-Kisan Scheme</p>";
+    }
+    if (occupation === "student" && age < 25) {
+        result += "<p>✅ Eligible for Scholarship Scheme</p>";
+    }
+    if (occupation === "unemployed") {
+        result += "<p>✅ Eligible for Skill Development Scheme</p>";
+    }
+    if (result === "") {
+        result = "<p>❌ No schemes found. Please check details.</p>";
+    }
+
+    document.getElementById("result").innerHTML = result;
+}
+</script>
+
+</body>
+</html>
